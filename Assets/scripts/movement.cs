@@ -6,30 +6,63 @@ using UnityEngine;
 public class movement : MonoBehaviour
 {
     public float speed;
+    public float jumpStrength;
+    public float jumpKill = 2f;
     public Vector3 gravity;
+    public float weerstand = 2;
+
+    //HAAL MIJ STRAKS OOK WEG
+    public Vector3 addBoi;
+
+
 
     private CharacterController controller;
-    
-    // Start is called before the first frame update
+    private Vector3 velocity = Vector3.zero;
+    private float jumpForce = 0f;
+    private float jumpBuffer = 0f;
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        //float s = Input.GetAxis("")
 
-        Vector3 movement = Vector3.zero;
-        movement += Vector3.forward * -v;
-        movement += Vector3.left * h;
-        movement += gravity;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpBuffer = 0.1f;
+        }
+        if(jumpBuffer >= 0)
+        {
+            jumpBuffer -= Time.deltaTime;
+        }
 
-        movement *= Time.deltaTime;
-        controller.Move(movement);
+        velocity += Vector3.forward * -v*speed;
+        velocity += Vector3.left * h*speed;
+        velocity += gravity * 10f * Time.deltaTime;
+
+        //TIJDELIJKE CODE HAAL MIJ STRAKS WEG
+        velocity += addBoi;
+
+
+        if (controller.isGrounded)
+        {
+            velocity.y = Mathf.Min(0, velocity.y);
+            jumpForce = Mathf.Min(0, jumpForce);
+            if (jumpBuffer > 0f)
+            {
+                jumpForce = jumpStrength;
+            }
+        }
+        velocity += Vector3.up * jumpForce;
+        jumpForce += (gravity.y / 80) * (1 / jumpKill);
+        velocity *= 1/weerstand;
+        controller.Move(velocity * Time.deltaTime);
 
 
     }
