@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2436231617829097852}
   - component: {fileID: 5641020795851084614}
-  - component: {fileID: 6404391153748184568}
+  - component: {fileID: -7358243056409608016}
+  - component: {fileID: 7805548288065588871}
   m_Layer: 0
   m_Name: wave
   m_TagString: Untagged
@@ -48,7 +49,20 @@ MonoBehaviour:
   speed: {x: 0, y: 0, z: 3.5}
   golfSterkte: 2
   golfFrequentie: 2
---- !u!114 &6404391153748184568
+--- !u!65 &-7358243056409608016
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2436231617829097859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7805548288065588871
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,9 +71,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2436231617829097859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19368d28c6260d4c8de71e4f92b268c, type: 3}
+  m_Script: {fileID: 11500000, guid: baf9bc3ac2bbfa84d86e21ec50da0e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blue: {fileID: 2100000, guid: 165beecc9e721d949b2dc8e3fda509a4, type: 2}
+  waveColor: 0
 --- !u!1 &2436231617981876223
 GameObject:
   m_ObjectHideFlags: 0
@@ -120,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6202557aa2c08cf47a82d934c47b28d5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

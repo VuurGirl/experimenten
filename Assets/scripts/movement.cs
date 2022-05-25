@@ -11,8 +11,7 @@ public class movement : MonoBehaviour
     public Vector3 gravity;
     public float weerstand = 2;
 
-    //HAAL MIJ STRAKS OOK WEG
-    public Vector3 addBoi;
+    
 
 
 
@@ -46,8 +45,6 @@ public class movement : MonoBehaviour
         velocity += Vector3.left * h*speed;
         velocity += gravity * 10f * Time.deltaTime;
 
-        //TIJDELIJKE CODE HAAL MIJ STRAKS WEG
-        velocity += addBoi;
 
 
         if (controller.isGrounded)
